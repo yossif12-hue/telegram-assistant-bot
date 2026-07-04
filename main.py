@@ -134,7 +134,7 @@ def main() -> None:
     application.add_handler(MessageHandler(filters.TEXT & ~filters.COMMAND, ai_chat))
 
     # بدء البوت
-    application.run_polling(allowed_updates=Update.ALL_TYPES)
+    application.run_polling()
 
 
 if __name__ == "__main__":
