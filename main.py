@@ -99,8 +99,10 @@ async def echo(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
 
 def main() -> None:
     """بدء تشغيل البوت."""
-    # إنشاء التطبيق وتمرير توكن البوت الخاص بك.
-    application = Application.builder().token(TOKEN).build()
+    # إنشاء التطبيق وتمرير توكن البوت الخاص بك مع إعدادات المهلة.
+    from telegram.request import HTTPXRequest
+    request = HTTPXRequest(connect_timeout=20, read_timeout=20)
+    application = Application.builder().token(TOKEN).request(request).build()
 
     # إضافة معالجات الأوامر
     application.add_handler(CommandHandler("start", start))
